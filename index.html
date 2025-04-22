@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>电子陪伴证</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('back1.jpg'); /* 替换为实际图片地址 */
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+        .real-time {
+            position: absolute;
+            top: 380px; /* 根据实际图片调整时间位置 */
+            left: 50%;
+            transform: translateX(-50%);
+            color: red;
+            font-size: 72px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .new-photo {
+            position: absolute;
+            top: 500px; /* 根据实际图片调整照片位置 */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px; /* 根据实际调整照片尺寸 */
+            height: 250px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="real-time" id="timeDisplay"></div>
+    <img src="people.jpg" alt="替换照片" class="new-photo"> <!-- 替换为新照片地址 -->
+    <script>
+        function updateRealTime() {
+            const now = new Date();
+            const options = {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            const formattedTime = now.toLocaleString(undefined, options).replace(/\//g, '-');
+            document.getElementById('timeDisplay').textContent = formattedTime;
+        }
+        setInterval(updateRealTime, 1000);
+        updateRealTime();
+    </script>
+</body>
+</html>
